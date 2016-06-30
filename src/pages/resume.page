@@ -1,0 +1,8 @@
+<apex:page showheader="false" sidebar="false" standardStylesheets="false">
+
+<html>
+    <apex:stylesheet value="http://sd-devsite.com/tbi/wp-content/themes/inovado_child/style.css?ver=1" />
+    <a href="/tbi/team/" target="_self" class=" button orange large" rel="slides[buttonlightbox]">Butttttoooooonnnnn</a>
+</html>
+
+</apex:page>

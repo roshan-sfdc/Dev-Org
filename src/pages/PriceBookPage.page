@@ -1,0 +1,13 @@
+<apex:page Controller="PriceBoookController">
+	<apex:pageBlock >
+		<apex:form >
+		<apex:outputLink value="{!link}/pbk/priceBookList.jsp">Create New PriceBook</apex:outputLink>
+			<apex:pageblockSection columns="1" >
+				<apex:pageBlocktable value="{!PriceDetails}" var="cd">
+					<apex:column value="{!cd.Name}"/>
+					<apex:column value="{!cd.PriceBook2Id}"/>
+				</apex:pageBlocktable>
+			</apex:pageblockSection>
+		</apex:form>
+	</apex:pageBlock>
+</apex:page>

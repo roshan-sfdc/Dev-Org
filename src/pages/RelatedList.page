@@ -1,0 +1,66 @@
+<apex:page controller="RelatedList" action="{!init}">
+    
+    <apex:includeScript value="https://code.jquery.com/jquery-1.10.2.js" />
+    <apex:includeScript value="https://code.jquery.com/ui/1.11.2/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+    
+    <style>
+        .opcls1 {
+            display: block;
+        }
+    
+        .opcls2 {
+            display: none;
+        }
+        
+        @media print {
+            .opcls2 {
+	            display: block;
+	        }
+	        
+	        .opcls1 {
+                display: none;
+            }
+        }
+    </style>
+    
+    
+    <apex:form >
+        <apex:pageBlock >
+            <div id="accordion">  
+                <apex:repeat value="{!contactList}" var="con">
+                    <h3>{!con.Name}</h3>  
+	                <div> 
+	                <apex:outputPanel styleClass="opcls1"> 
+		                <apex:pageBlockTable value="{!con}" var="objCon" >
+		                     <apex:repeat value="{!labelVsAPINameMap}" var="field">
+			                     <apex:column headerValue="{!labelVsAPINameMap[field]}" >
+			                         <apex:outputText escape="false" value="{!objCon[field]}" />
+			                     </apex:column>
+		                     </apex:repeat>
+		                </apex:pageBlockTable> 
+	                </apex:outputPanel>
+	                
+                    <apex:outputPanel styleClass="opcls2"> 
+	                    <apex:repeat value="{!labelVsAPINameMap}" var="field">
+	                         <apex:pageBlockTable value="{!con}" var="objcon" >
+	                             <apex:column headerValue="{!labelVsAPINameMap[field]}" >
+	                                 <apex:outputText escape="false" value="{!IF(objcon[field]==null, '--', objcon[field])}" />
+	                             </apex:column>
+	                         </apex:pageBlockTable> 
+	                     </apex:repeat>
+                    </apex:outputPanel>
+	                </div> 
+                </apex:repeat>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <script>  
+        $(function() {
+            $("#accordion").accordion({collapsible: true});  
+            $('.ui-accordion-content').css('height','auto');
+        });  
+    </script>
+    
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="McLabs2__Property__c" extensions="McLabs2.McLabsGalleryController">
+
+        <apex:outputPanel rendered="{!imageAvailable}">
+            <apex:includeScript value="{!$Resource.McLabs2__jquery}"/>
+            <apex:includeScript value="{!$Resource.McLabs2__Carousel_Script}"/>
+            <apex:stylesheet value="{!URLFOR($Resource.McLabs2__Carousel_Images, 'McLabs2__Carousel_Images/McLabs2__Carousel_CSS.css')}"/>
+            
+            <c:McLabsGallery images="{!images}" />            
+            
+        </apex:outputPanel>
+        
+        <apex:outputPanel rendered="{!imageAvailable == false}">
+            <apex:pageMessage title="No Image Available" summary="Attach images to the notes & attachments section to see them." severity="info" strength="3" />
+        </apex:outputPanel>  
+        
+</apex:page>

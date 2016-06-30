@@ -1,0 +1,29 @@
+<apex:component controller="CustomEditController" allowDML="true">
+    <apex:attribute name="record_Id" description="Record Id" type="String" required="true" assignTo="{!recordId}"/>
+    <apex:attribute name="recordType_Id" description="Record Type Id" type="String" required="true" assignTo="{!recordTypeId}"/>
+    
+    <apex:pageMessages id="msg"/>
+    <apex:form id="theForm">
+        <center>  
+           <apex:commandButton value="Save" action="{!saveRecords}" id="btn" status="status" /> <!-- rerender="msg" -->
+           <apex:actionStatus id="status" >
+               <apex:facet name="start" >
+                   <apex:image value="/img/loading32.gif" style="height: 15px;" />
+               </apex:facet>
+           </apex:actionStatus>
+           &nbsp;&nbsp;
+           <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true"/> 
+        </center>
+       
+        <apex:pageBlock >
+           <apex:repeat value="{!sectionList}" var="section" >
+               <apex:pageBlockSection title="{!section}" >
+                  <apex:repeat value="{!sectionVsFieldsMap[section]}" var="field" >
+                      <apex:inputField value="{!sObjectToBind[field]}" />
+                  </apex:repeat>
+              </apex:pageBlockSection> 
+           </apex:repeat>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:component>

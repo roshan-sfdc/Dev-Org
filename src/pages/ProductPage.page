@@ -1,0 +1,38 @@
+<apex:page Controller="ProductController">
+	<apex:pageBlock >
+		<apex:form >
+			<apex:pageBlockSection >
+				<apex:selectList value="{!ptype}" id="chooseType" size="1">
+					<apex:actionSupport event="onchange" rerender="list"/>
+					<apex:selectOption itemValue="select" itemLabel="---Select---"/>
+					<apex:selectOption itemValue="Hardware" itemLabel="Hardware"/>
+					<apex:selectOption itemValue="Software" itemLabel="Software"/>
+					<apex:selectOption itemValue="Home Appliances" itemLabel="Home Appliances"/>
+					<apex:selectOption itemValue="" itemLabel="Product Type not defined"/>
+				</apex:selectList>	
+			</apex:pageBlockSection>
+			<apex:pageBlockSection columns="1">
+				<apex:pageBlockTable value="{!search}" var="cd" id="list">
+					<apex:column >
+						<apex:outputLink value="{!link}/{!cd.Id}">{!cd.Name}
+						</apex:outputLink>
+					</apex:column>
+					<apex:column value="{!cd.Company__c}"/>
+					<apex:column value="{!cd.Description}"/>
+				</apex:pageBlockTable>
+			</apex:pageBlockSection>
+			<apex:pageBlockSection >
+				<center>
+				<apex:commandbutton action="{!page_Add_Products}"  value="Add New Products" status="status"/>
+			</center>
+			</apex:pageBlockSection>
+			<apex:actionStatus id="status">
+		        <apex:facet name="start">
+			        <apex:outputPanel >
+			               <apex:image value="/img/loading32.gif" style="height: 15px;"/>
+			        </apex:outputPanel>   
+	            </apex:facet>
+	        </apex:actionStatus>
+		</apex:form>	
+	</apex:pageBlock>
+</apex:page>

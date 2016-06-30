@@ -1,0 +1,8 @@
+<apex:page controller="TaskController">
+<apex:form >
+	Search:
+	 	<apex:inputText value="{!searchtext}"/> 
+   		<apex:commandButton value="Go" rerender="ol"/>
+   		<apex:outputLabel value="{!searchtext}" id="ol"/>
+</apex:form>
+</apex:page>

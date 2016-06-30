@@ -1,0 +1,34 @@
+<apex:page >
+
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"  />
+    <apex:includeScript value="{!$Resource.multiselectable}" />
+     
+    
+    <script type="text/javascript">
+	    $(document).ready(function() {
+            $('.multi').multiselectable();
+            $('.multis-right').text('>>');
+            $('.multis-left').text('<<');
+	    });
+    </script>
+    
+    <style>
+        .multiselectable { width:500px; display:block; overflow: hidden; width: 100%; }
+        .multiselectable select, .multiselectable div { width: 200px; float:left; height: 152px;}
+        .multiselectable div * { display: block; margin: 0 auto; }
+        .multiselectable div { display: inline; }
+        .multiselectable .m-selectable-controls { margin-top: 3em; width: 50px; }
+        .multiselectable .m-selectable-controls button { margin-top: 1em; }
+    </style>
+    
+    <apex:form >
+        search:
+        <input type="text" />
+	    <select class="multi">
+	      <option value="volvo">Volvo</option>
+	      <option value="saab">Saab</option>
+	      <option value="mercedes">Mercedes</option>
+	      <option value="audi">Audi</option>
+	    </select>
+    </apex:form>
+</apex:page>

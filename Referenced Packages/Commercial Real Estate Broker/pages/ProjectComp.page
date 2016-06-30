@@ -1,0 +1,4 @@
+<apex:page standardController="McLabs2__Escrow__c" extensions="McLabs2.ProjectCompController" action="{!createComp}">
+    <apex:pagemessages />
+    <apex:detail subject="{!McLabs2__Escrow__c.id}" showChatter="true" relatedList="true" relatedListHover="true"/>
+</apex:page>

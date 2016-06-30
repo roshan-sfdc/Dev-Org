@@ -1,0 +1,61 @@
+<apex:page standardController="McLabs2__Commission_Plan__c" extensions="McLabs2.EditCommissionPlanController" tabStyle="McLabs2__Commission_Plan__c">
+    <apex:sectionHeader title="Edit Commission Plan" subtitle="{!McLabs2__Commission_Plan__c.Name}" />
+    <apex:form >
+        <apex:pagemessages />
+        <apex:pageblock title="Commission Plan">
+            <apex:pageblockbuttons >
+                <apex:commandbutton value="Save" action="{!save}" />
+                <apex:commandbutton value="Cancel" action="{!cancel}" immediate="true" />
+            </apex:pageblockbuttons>
+            <apex:pageblocksection columns="1">
+                <apex:inputfield value="{!McLabs2__Commission_Plan__c.Name}"/>
+                <apex:inputfield value="{!McLabs2__Commission_Plan__c.McLabs2__Calculate_Splits__c}"/>
+            </apex:pageblocksection> 
+        </apex:pageblock> 
+        <apex:pageblock title="Splits" id="splits">
+            <apex:pageblocktable value="{!splitWrappers}" var="wrapper" > 
+                <apex:facet name="footer">
+                    <apex:commandlink value="Add Split" action="{!addSplit}" rerender="splits" />
+                </apex:facet>
+                <apex:column >
+                    <apex:commandlink value="Del" action="{!deleteSplit}" rerender="splits">
+                        <apex:param name="toDelNum" value="{!wrapper.splitNum}" assignTo="{!rowNumber}"/>
+                    </apex:commandlink>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.McLabs2__Commission_Plan_Split__c.fields.McLabs2__Gross_Commission_From__c.Label}">
+                    <apex:inputfield value="{!wrapper.split.McLabs2__Gross_Commission_From__c}" required="true"/>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.McLabs2__Commission_Plan_Split__c.fields.McLabs2__Gross_Commission_To__c.Label}">
+                    <apex:inputfield value="{!wrapper.split.McLabs2__Gross_Commission_To__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.McLabs2__Commission_Plan_Split__c.fields.McLabs2__Agent_Split__c.Label}">
+                    <apex:inputfield value="{!wrapper.split.McLabs2__Agent_Split__c}" required="true" />
+                </apex:column>
+                
+            </apex:pageblocktable>
+            Leave Gross Commission To blank for the last row
+        </apex:pageblock>
+        <apex:pageblock title="Members" id="members"> 
+            <apex:pageblocktable value="{!memberWrappers}" var="wrapper">
+                <apex:facet name="footer">
+                    <apex:commandlink value="Add Member" action="{!addMember}" rerender="members" />
+                </apex:facet>
+                <apex:column >
+                    <apex:commandlink value="Del" action="{!deleteMember}" rerender="members">
+                        <apex:param name="toDelNum" value="{!wrapper.memberNum}" assignTo="{!rowNumber}"/>
+                    </apex:commandlink>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.McLabs2__Commission_Plan_Member__c.fields.McLabs2__Agent__c.Label}">
+                    <apex:inputfield value="{!wrapper.member.McLabs2__Agent__c}" required="true"/>
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.McLabs2__Commission_Plan_Member__c.fields.McLabs2__Previous_Gross_Commissions__c.Label}">
+                    <apex:inputfield value="{!wrapper.member.McLabs2__Previous_Gross_Commissions__c}" />
+                </apex:column>
+                <apex:column headerValue="{!$ObjectType.McLabs2__Commission_Plan_Member__c.fields.McLabs2__Date_for_Previous_Gross_Commissions__c.Label}">
+                    <apex:inputfield value="{!wrapper.member.McLabs2__Date_for_Previous_Gross_Commissions__c}" />
+                </apex:column>
+            </apex:pageblocktable>
+            Note: Agents can only be a part of one Commission Plan. Any agents added here will be removed from any other plan they are a part of.
+        </apex:pageblock>
+    </apex:form>
+</apex:page>

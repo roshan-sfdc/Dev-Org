@@ -1,0 +1,25 @@
+<apex:page >
+    <apex:includeScript value="https://code.jquery.com/jquery-1.10.2.js" />
+    <apex:includeScript value="https://code.jquery.com/ui/1.11.2/jquery-ui.js" />
+    <apex:stylesheet value="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+    
+    
+    <div id="accordion">  
+        <h3>Section 1</h3>
+		<div>
+		    This is demo text 1
+		</div>
+		
+		<h3>Section 2</h3>
+		<div>
+		    This is demo text 2
+		</div>
+    </div>
+    
+    <script>  
+        $(function() {
+            $("#accordion").accordion({collapsible: true});   
+        });  
+    </script>
+    
+</apex:page>

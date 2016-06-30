@@ -1,0 +1,91 @@
+<apex:page renderAs="pdf" standardController="Quote" >
+ 	<apex:pageBlock >
+ 	<apex:form >
+ 	<hr/>
+ 	<center>
+ 	<h1><apex:outputText value="{!$Label.OpporName}"/>
+	{!Quote.Opportunity.Name}</h1>
+ 	Date: {!MONTH(TODAY())}/{!DAY(TODAY())}/{!YEAR(TODAY())}
+ 	</center>
+ 	<hr/>
+ 	<table width="100%">
+	    <tr width="100%">
+		    <td width="50%" align="left">
+		       <apex:image url="{!$Resource.EsplLogo}"  width="200" height="150"/>
+		    </td>
+	 	</tr>
+ 	</table>
+ 	
+	 <table align="right">
+	 	<tr>
+		 	<td>Created Date:</td>
+		 	<td>{!Quote.CreatedDate}</td>
+	 	</tr>
+	 	<tr>
+		 	<td>Expiration Date:</td>
+		 	<td>{!Quote.ExpirationDate}</td>
+	 	</tr>
+	 </table>
+	
+	
+ 	
+ 	<apex:pageBlockSection >
+ 		<apex:pageBlockSectionItem >
+ 			<apex:outputLabel value="QuoteNumber :"/>
+ 			<apex:outputLabel value="{!Quote.QuoteNumber}"/>
+ 		</apex:pageBlockSectionItem><br/>
+ 		<apex:pageBlockSectionItem >
+ 			<apex:outputLabel value="Name :"/>
+ 			<apex:outputLabel value="{!Quote.Name}"/>
+ 		</apex:pageBlockSectionItem>&nbsp;
+ 		<apex:pageBlockSectionItem >
+ 			<apex:outputLabel value="Opportunity :"/>
+ 			<apex:outputLabel value="{!Quote.Opportunity.Name}"/>
+ 		</apex:pageBlockSectionItem>
+ 		
+ 	</apex:pageBlockSection><br/>
+ 	<apex:pageBlockSection >
+ 		<apex:dataTable value="{!Quote.QuoteLineItems}" var="cd" id="theTable" headerClass="tablehead" rowClasses="odd,even" style="font-size: 100%; " columnsWidth=" 100px, 150px, 150px, 150px, 150px">
+ 			<apex:column >
+ 				<apex:facet name="header">Product Name</apex:facet>
+ 				<apex:outputText value="{!cd.PriceBookEntry.Product2.Name}"/>
+ 			</apex:column>
+ 			<apex:column >
+ 				<apex:facet name="header">Quantity</apex:facet>
+ 				<apex:outputText value="{!cd.Quantity}"/>
+ 			</apex:column>
+ 			<apex:column >
+ 				<apex:facet name="header">List Price</apex:facet>
+ 				<apex:outputText value="{!cd.ListPrice}"/>
+ 			</apex:column>
+ 			<apex:column >
+ 				<apex:facet name="header">Subtotal</apex:facet>
+ 				<apex:outputText value="{!cd.Subtotal}"/>
+ 			</apex:column>
+ 			<apex:column >
+ 				<apex:facet name="header">Discount</apex:facet>
+ 				<apex:outputText value="{!cd.Quote.Discount}"/>
+ 			</apex:column>
+ 			<apex:column >
+ 				<apex:facet name="header">Total Price</apex:facet>
+ 				<apex:outputText value="{!cd.TotalPrice}"/>
+ 			</apex:column>
+ 		</apex:dataTable>
+ 		</apex:pageBlockSection><br/><br/>
+ 		<hr/>
+ 		<apex:pageBlockSection >
+ 			<apex:pageBlockSectionItem >
+ 				<apex:outputLabel value="Grand Total =" />
+ 				<apex:outputLabel value="{!Quote.GrandTotal}"/>
+ 			</apex:pageBlockSectionItem>
+ 		</apex:pageBlockSection>
+ 		<hr/>
+ 		<apex:pageBlockSection title="Quote Acceptance Information" >
+ 			<apex:outputLabel value="Signature------------------"/><br/>
+ 			<apex:outputLabel value="Name----------------------"/><br/>
+ 			<apex:outputLabel value="Title------------------------"/><br/>
+ 			<apex:outputLabel value="Date------------------------"/><br/>
+ 		</apex:pageBlockSection>
+ 	</apex:form>	
+ 	</apex:pageBlock>
+</apex:page>

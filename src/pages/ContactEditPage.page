@@ -1,0 +1,3 @@
+<apex:page standardcontroller="Contact">
+    <c:CustomEditComponent record_Id="{!Contact.Id}" recordType_Id="{!Contact.RecordTypeId}"/> 
+</apex:page>

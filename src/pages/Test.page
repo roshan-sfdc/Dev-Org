@@ -1,0 +1,18 @@
+<apex:page controller="Test" sidebar="false" showHeader="false">
+    <apex:form >
+    
+	<apex:selectList value="{!str}" size="1" styleClass="tstcls1" id="tstid1">
+	   <apex:selectOptions value="{!values}" />
+	</apex:selectList>
+	 
+	 <br/><br/><br/><br/><br/><br/>
+	 
+	
+	<apex:outputText value="This is demo text!!!!!!!" styleClass="cls2" id="id2" />
+	
+	<br/><br/><br/><br/><br/><br/>
+	
+	<input type="button" value="Submit" styleClass="cls3" id="id3" />
+	
+	</apex:form>
+</apex:page>

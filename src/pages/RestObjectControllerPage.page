@@ -1,0 +1,61 @@
+<apex:page controller="RestObjectController" sidebar="false" >
+<style type="text/css">
+.width{
+	width: 300px;
+}
+</style>
+	
+	<apex:form id="formID">
+		<apex:pageblock >
+			<apex:pageMessages />
+			<apex:pageblockSection title="Objects">
+				<apex:Selectlist value="{!strSelectedObject}" multiselect="false" size="1">
+				  <apex:selectOption itemLabel="--None--" itemValue="--None--"/>  
+					<apex:selectOptions value="{!lstAllObjectNames}" />
+				<apex:actionsupport event="onchange" action="{!fetchFields}" status="status" rerender="formID"/>
+				</apex:Selectlist>
+			</apex:pageblockSection>
+
+			<apex:pageblockSection title="Fields of {!strSelectedObject}" rendered="{!blnIsVisible}">				
+				<apex:Selectlist styleclass="width" value="{!strSelectedField}" multiselect="true" size="5">
+					<apex:selectOptions value="{!lstAllFields}" />
+<!-- 				<apex:actionsupport event="onSelect" action="{!generateQuery}" status="status" /> -->
+				</apex:Selectlist>
+				<table>
+					<tr>
+						<td><apex:outputlabel value="{!intCountField}"/></td>
+						<td></td>
+						<td></td>
+						<td><apex:commandbutton value="Run" action="{!fetchRecords}" status="status" rerender="formID"/></td>
+					</tr>
+				</table>				
+			</apex:pageblockSection>	
+			
+				
+			<apex:pageblockSection title="Records of {!strSelectedObject}" rendered="{!blnIsRecords}">
+				<apex:pageBlockTable value="{!lstRecords}" var="record">  
+	               		 <apex:repeat value="{!strSelectedField}" var="FieldValue">  
+	                    <apex:column value="{!record[FieldValue]}" /> 	                
+	                </apex:repeat>  
+	            </apex:pageBlockTable> 
+	        </apex:pageblockSection>    
+
+			</apex:pageblock>
+			
+			<apex:actionStatus id="status">
+					<apex:facet name="start">
+						<center>
+							<table>
+								<tr>
+									<td><img src="/img/loading.gif" /></td>
+									<td></td>
+									<td></td>
+									<td>Loading ....</td>
+								</tr>
+							</table>
+						</center>
+					</apex:facet>
+		</apex:actionStatus>
+
+	</apex:form>
+</apex:page>

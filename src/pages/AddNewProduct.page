@@ -1,0 +1,41 @@
+<apex:page Controller="AddController">
+	<apex:form >
+		<apex:pageBlock >
+			<apex:pageBlockButtons >
+				<apex:commandButton action="{!save}" value="Save" status="status"/>
+			</apex:pageBlockButtons>
+			
+			<apex:pageBlockTable value="{!data}" var="product" id="table">
+			 	<apex:facet name="header">
+                    <apex:commandLink value="Add Row" action="{!addRow}" rerender="table"/>
+               	</apex:facet>
+                <apex:column headerValue="Product Name">
+                    <apex:inputField value="{!product.Name}"/>
+                </apex:column>
+                <apex:column headerValue="Company">
+                    <apex:inputField value="{!product.Company__c}"/>
+                </apex:column>  
+                <apex:column headerValue="IsActive">
+                    <apex:inputField value="{!product.IsActive}"/>
+                </apex:column> 
+                <apex:column headerValue="Product Description">
+                    <apex:inputField value="{!product.Description}"/>
+                </apex:column>  
+                <apex:column headerValue="Product Code">
+                    <apex:inputField value="{!product.ProductCode}"/>
+                </apex:column>  
+                <apex:column headerValue="Type">
+                    <apex:inputField value="{!product.Product_Type__c}"/>
+                </apex:column>  
+                  
+                <apex:actionStatus id="status">
+		        <apex:facet name="start">
+			        <apex:outputPanel >
+			               <apex:image value="/img/loading32.gif" style="height: 15px;"/>
+			        </apex:outputPanel>   
+	            </apex:facet>
+	        </apex:actionStatus>
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

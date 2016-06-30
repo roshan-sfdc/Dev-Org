@@ -1,0 +1,15 @@
+<apex:page controller="AccountDataController" >
+
+<apex:pageBlock title="Account Data Table">
+
+
+
+<apex:pageBlockTable value="{!lstAccnt}" var="Account">
+
+<apex:column value="{!Account.Name}"/>
+<apex:column value="{!Account.Email__c}"/>
+<apex:column value="{!Account.Phone}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+
+</apex:page>

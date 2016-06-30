@@ -1,0 +1,218 @@
+<apex:page id="thePage" showHeader="false" sidebar="false" controller="Tquila_Demo">
+
+
+<html>
+
+<style>
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+  -webkit-font-smoothing: antialiased;
+  font: normal 14px arial,sans-serif;
+}
+
+
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  //height: 60px;
+  background-color: #f5f5f5;
+  margin-top:50px;
+  padding-top:20px;
+  //padding-bottom:20px;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+
+/****************body**********************/
+
+#nav {
+    display: table;
+    height: 87px;
+    width: 100%;
+    padding-left: 0px;
+}
+
+#nav li {
+    display: table-cell;
+    height: 87px;
+    width: 16.666666667%;  /* (100 / numItems)% */
+    line-height: 87px;
+    text-align: center;
+    background: #ddd;
+    border-right: 15px solid #fff;
+    white-space: nowrap;
+}
+
+.pbBody {
+    
+        min-height: 150px;
+}
+/*****************************************/
+
+	
+
+
+
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<apex:stylesheet value="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script>
+
+</script>
+
+<!-- Wrap all page content here -->
+<div id="wrap">
+  
+    <header class="header">
+    
+        <c:Tquila_Demo_Header />
+    </header>
+
+
+    <div class="row">
+  
+    </div>
+    
+    <apex:form >
+    <center>
+    <div class="container" style="margin: 10%;">
+        
+        <ul id="nav">
+            <li class="nav1" count="1"><a href="#"></a></li>
+            <li class="nav2" count="2"><a href="#"></a></li>
+            <li class="nav3" count="3"><a href="#"></a></li>
+        </ul>
+        
+        <apex:pageBlock >
+            <apex:outputPanel styleClass="step1"  style="display:none;">
+                <apex:panelGrid columns="2" >
+                    <apex:outputLabel value="Contact Name" />
+                    <apex:inputField value="{!surveyResult.Name}" styleClass="conName"/>
+                    
+                    <apex:outputLabel value="Address" />
+                    <apex:inputText value="{!surveyResult.Address__c}" />
+                    
+                    <apex:outputLabel value="Customer Type" />
+                    <apex:inputField value="{!surveyResult.Customer_Type__c}" />
+                </apex:panelGrid>
+            </apex:outputPanel> 
+            
+            <apex:outputPanel styleClass="step2"  style="display:none;">
+                <apex:panelGrid columns="2" >
+                    <apex:outputLabel value="Overall Satisfaction(1-5)" />
+                    <apex:inputField value="{!surveyResult.Overall_Satisfaction_1_5__c}" />
+                    
+                    <apex:outputLabel value="Which rep did you work with?" />
+                    <apex:outputpanel >
+                        <apex:inputText styleClass="repName"/> &nbsp;&nbsp;
+                        <apex:inputText value="{!surveyResult.representative__c}" styleClass="repId"/>
+                        <apex:outputLink value="#" styleClass="popupclass"><apex:image value="https://help.salesforce.com/resource/HTHelpDocImages_196_19_en_US_7/lookup.png" /></apex:outputLink>
+                    </apex:outputpanel>
+                    
+                    <apex:outputLabel value="Comments" />
+                    <apex:inputField value="{!surveyResult.Comments__c}" />
+                </apex:panelGrid>
+            </apex:outputPanel> 
+            
+            <apex:outputPanel styleClass="step3"  style="display:none;">
+                <apex:panelGrid columns="1" >
+                    <apex:outputText styleClass="thankyouMsg" />
+                    <apex:commandButton action="{!submit}" value="Submit!" />
+                    <!--<input type="button" styleClass="btnn" value="Submit" />-->
+                </apex:panelGrid>
+            </apex:outputPanel> 
+        </apex:pageBlock>
+      	
+    </div>
+    
+    <div style="display:none">
+        <div class="dialogContent">
+            <apex:pageBlock >
+                <apex:pageBlockTable value="{!Users}" var="user">
+                    <apex:column headerValue="User Name">
+                        <apex:outputLink value="#" styleClass="{!user.Id}" onclick="selectUser('{!user.Id}');">{!user.Name}</apex:outputLink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </div>
+    </div>
+    
+    </center>
+    </apex:form>  
+</div><!--/wrap-->
+
+<div id="footer" style="background-color: black;">
+	    <c:Tquila_Demo_Footer />
+</div>
+
+</html>
+
+<script>
+    
+    $(document).ready(function(){
+        $('.step1').show();
+        $('.nav1').css('background', 'red');
+    });
+    
+    $('.container ul li').click(function(){
+        
+        $("[class*=nav]").css('background', '#ddd');
+        $(this).css('background', 'red');
+        
+        
+        
+        $("[class*=step]").hide();
+        var count = $(this).attr('count');
+        $('.step'+count).show();
+        
+        if(count == 3) {
+            var conName = $('.conName').val().toUpperCase();
+            if (conName != "") {
+                  var msg =  conName + ' thanks for your time. Press submit to submit your survey and be entered to win a free motorcycle!';
+                $('.thankyouMsg').text(msg);  
+            }
+        }
+        
+    });
+    
+    $('.popupclass').on('click',function() {
+	       $('.dialogContent').dialog({
+			  modal: true,
+			  buttons: {
+				"Close": function() {
+				  $( this ).dialog( "close" );
+				}
+			  }
+		 });
+     });
+     
+    function selectUser(userId) {
+        $('.repName').val($('.'+userId).text());
+        $('.repId').val(userId);
+        $('.dialogContent').dialog( "close" );
+    } 
+    
+</script>
+
+
+</apex:page>

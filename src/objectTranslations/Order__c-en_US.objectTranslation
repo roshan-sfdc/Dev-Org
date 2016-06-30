@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Orders</value>
+    </caseValues>
+    <fields>
+        <label><!-- Customer --></label>
+        <name>Customer__c</name>
+        <relationshipLabel><!-- Orders --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Description --></label>
+        <name>Order_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Placed Date --></label>
+        <name>Order_Placed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Quantity --></label>
+        <name>Order_Quantity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Ship Date --></label>
+        <name>Order_Ship_Date__c</name>
+    </fields>
+    <layouts>
+        <layout>Order Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- OrderPlace Date is greater than OrderShipDate --></errorMessage>
+        <name>CompareOrderPlaceOrderShipDate</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Orders should not be placed from Customers belonging to Gujarat and Maharashtra and should give an error --></errorMessage>
+        <name>InvalidOrderStates</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Order quantity should always be greater than 0 --></errorMessage>
+        <name>NoEmptyOrderQuantity</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Custom_Edit --></label>
+        <name>Custom_Edit</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,11 @@
+<apex:page standardcontroller="Contact">
+<style>
+#choiceinput1, #choiceinput2{
+    width:250px;
+}
+
+</style>
+<div style="width:400px;float:right;"><chatter:feed entityId="{!Contact.Id}" /></div>
+<div style="width:600px;float:left;"><apex:detail /></div>
+
+</apex:page>

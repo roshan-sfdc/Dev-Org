@@ -1,0 +1,27 @@
+<apex:page standardController="Account" >
+
+    <style>
+
+        body {
+           font-size: 18px; 
+        }
+ 
+    </style>
+
+    <apex:detail subject="{!account.Id}" relatedList="true" title="true" inlineEdit="true" relatedListHover="true" />
+    
+    <script>
+         var SesId = '{!GETSESSIONID()}';
+         console.log('==SesId=='+SesId);
+         
+         var result;
+		
+		//If you want to get the layout without the record type
+		result = sforce.connection.describeLayout('account');
+		
+		var layouts = result.getArray("layouts");
+		console.log('===layouts==='+layouts);
+		
+    </script>
+    
+</apex:page>

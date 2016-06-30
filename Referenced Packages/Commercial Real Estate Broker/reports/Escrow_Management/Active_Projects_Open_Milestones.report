@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Escrow__c$Name</field>
+    </columns>
+    <columns>
+        <field>Escrow__c$Status__c</field>
+    </columns>
+    <columns>
+        <field>Escrow__c.Project_Milestones__r$Name</field>
+    </columns>
+    <columns>
+        <field>Escrow__c.Project_Milestones__r$Description__c</field>
+    </columns>
+    <columns>
+        <field>Escrow__c.Project_Milestones__r$Total_Late_Tasks__c</field>
+    </columns>
+    <columns>
+        <field>Escrow__c.Project_Milestones__r$Total_Open_Tasks__c</field>
+    </columns>
+    <columns>
+        <field>Escrow__c.Project_Milestones__r.Child_Milestones__r$Name</field>
+    </columns>
+    <columns>
+        <field>Escrow__c.Project_Milestones__r.Child_Milestones__r$Description__c</field>
+    </columns>
+    <description>What Milestones are open?</description>
+    <filter>
+        <criteriaItems>
+            <column>Escrow__c$Status__c</column>
+            <operator>equals</operator>
+            <value>Pending,In Escrow</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Active Escrows Open Milestones</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Milestone1_Projects_Milestones__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Escrow__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

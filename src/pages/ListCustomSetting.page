@@ -1,0 +1,26 @@
+<apex:page controller="ListCustomSetting" sidebar="false" showHEader="false">
+    <apex:form id="theForm">
+	    <apex:panelGrid columns="2">
+	    
+	    <apex:panelGroup >
+	        <apex:selectList value="{!country}" size="1" onChange="countryAction()">
+	            <apex:selectOptions value="{!countryOptions}" />
+	        </apex:selectList>
+	        
+	        <apex:actionStatus id="countryPicklistStatus" >
+	           <apex:facet name="start">
+	               <apex:image value="/img/loading32.gif" style="height: 15px;" />
+	           </apex:facet>
+	        </apex:actionStatus>
+	     </apex:panelGroup>  
+	     
+	        <apex:selectList value="{!city}" size="1" id="cityPicklist">
+                <apex:selectOptions value="{!cityOptions}" />
+            </apex:selectList>
+	    </apex:panelGrid>
+	    
+	    <apex:actionFunction name="countryAction" action="{!getCityOptions}" status="countryPicklistStatus" reRender="cityPicklist" />
+	    
+	    
+    </apex:form> 
+</apex:page>

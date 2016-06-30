@@ -1,0 +1,19 @@
+<apex:component >
+
+    <apex:styleSheet value="{!URLFOR($Resource.Tquila_demo_Resource, 'header_style.css')}" />
+
+    <div  class="header_div">
+        
+        <apex:image value="{!URLFOR($Resource.Tquila_demo_Resource, 'header_logo.png')}" />
+        
+        <ul id="ul_text">
+            <li><a href="#">MOTORCYCLES</a></li>
+            <li><a href="#">DEALERS</a></li>
+            <li><a href="#">EVENTS</a></li>
+            <li><a href="#">MUSEUM</a></li>
+            <li><a href="#">OWNERS</a></li>
+            <li><a href="#">MOTORCLOTHES</a></li>
+            <li><a href="#">TEST RIDE REQUEST</a></li>
+        </ul>
+    </div>
+</apex:component>

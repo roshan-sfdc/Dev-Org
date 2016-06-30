@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customApplications>
+        <label><!-- Customer Order Application --></label>
+        <name>Customer_Order_Application</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Order Management --></label>
+        <name>Order_Management</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Payroll System --></label>
+        <name>Payroll_System</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Recruitment App --></label>
+        <name>Recruitment_App</name>
+    </customApplications>
+    <customApplications>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </customApplications>
+    <customLabels>
+        <label><!-- Commission Error Message --></label>
+        <name>McLabs2__Commission_Error_Message</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- OpporName --></label>
+        <name>OpporName</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- TestLabel --></label>
+        <name>TestLabel</name>
+    </customLabels>
+    <customLabels>
+        <label>This is translated text in Swedish through .stf file.</label>
+        <name>Translation_Test</name>
+    </customLabels>
+    <customLabels>
+        <label><!-- test --></label>
+        <name>test</name>
+    </customLabels>
+    <customTabs>
+        <label><!-- Admin Settings --></label>
+        <name>Admin_Settings</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Campain Management --></label>
+        <name>Campain_Management</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- DEMOPAGE --></label>
+        <name>DEMOPAGE</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Opportunity Tab --></label>
+        <name>Opportunity_Tab</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- OrgConnector --></label>
+        <name>OrgConnector</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- PriceBookTab --></label>
+        <name>PriceBookTab</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- ProductTab --></label>
+        <name>ProductTab</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- SSO --></label>
+        <name>SSO</name>
+    </customTabs>
+    <customTabs>
+        <label><!-- Search Page --></label>
+        <name>Search_Page</name>
+    </customTabs>
+    <quickActions>
+        <label><!-- LogACall --></label>
+        <name>LogACall</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewAccount --></label>
+        <name>NewAccount</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewCase --></label>
+        <name>NewCase</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewContact --></label>
+        <name>NewContact</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewEvent --></label>
+        <name>NewEvent</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewGroup --></label>
+        <name>NewGroup</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewLead --></label>
+        <name>NewLead</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewNote --></label>
+        <name>NewNote</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewOpportunity --></label>
+        <name>NewOpportunity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- NewTask --></label>
+        <name>NewTask</name>
+    </quickActions>
+    <reportTypes>
+        <description><!-- Positions with Reviewed Job Applications --></description>
+        <label><!-- Positions with Reviewed Job Applications --></label>
+        <name>Positions_with_Reviewed_Job_Applications</name>
+        <sections>
+            <columns>
+                <label><!-- Job Application Created By --></label>
+                <name>Job Application Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Job Application Created Date --></label>
+                <name>Job Application Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Job Application Status --></label>
+                <name>Job Application Status</name>
+            </columns>
+            <columns>
+                <label><!-- Position Created By --></label>
+                <name>Position Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Position Created Date --></label>
+                <name>Position Created Date</name>
+            </columns>
+            <columns>
+                <label><!-- Position Status --></label>
+                <name>Position Status</name>
+            </columns>
+            <columns>
+                <label><!-- Review Created By --></label>
+                <name>Review Created By</name>
+            </columns>
+            <columns>
+                <label><!-- Review Created Date --></label>
+                <name>Review Created Date</name>
+            </columns>
+            <label><!-- Position, Job Application, and Review Fields --></label>
+            <name>Position, Job Application, and Review Fields</name>
+        </sections>
+    </reportTypes>
+    <reportTypes>
+        <description><!-- Translation Demo --></description>
+        <label><!-- Translation Demo --></label>
+        <name>Translation_Demo</name>
+        <sections>
+            <label><!-- Accounts --></label>
+            <name>Accounts</name>
+        </sections>
+        <sections>
+            <label><!-- Contacts --></label>
+            <name>Contacts</name>
+        </sections>
+    </reportTypes>
+</Translations>

@@ -1,0 +1,23 @@
+<apex:page controller="kk">
+    <apex:form >
+<!-- 	    <center> -->
+<!-- 	        <apex:commandButton value="Save" action="{!saveRecords}" rerender="rr" status="status"/> &nbsp;&nbsp; -->
+<!-- 	        <apex:actionStatus id="status" > -->
+<!-- 	            <apex:facet name="start" > -->
+<!-- 	                <apex:image value="/img/loading32.gif" style="height: 15px;" /> -->
+<!-- 	            </apex:facet> -->
+<!-- 	        </apex:actionStatus> -->
+<!-- 	        <apex:commandButton value="Cancel" action="{!Cancel}" immediate="true"/> -->
+<!-- 	    </center> -->
+<!-- 	    <apex:dynamicComponent componentValue="{!PageBlock}" id="rr"/> -->
+
+        <apex:pageBlock title="without field set use">  
+	       <apex:pageblocksection title="dynamic object">  
+	           <apex:repeat value="{!listobjectfields}" var="fieldapiname">  
+	               <apex:inputfield value="{!sobjecttobind[fieldapiname]}"/>  
+	           </apex:repeat>  
+	       </apex:pageblocksection>  
+       </apex:pageblock>  
+       
+    </apex:form>
+</apex:page>

@@ -1,0 +1,20 @@
+<apex:page >
+    <apex:form >
+        <apex:panelGrid columns="2" >
+            <select title="Available" size="10" multiple="multiple">
+				<option value="Marketing Email List">Marketing Email List</option>
+				<option value="Marketwatch">Marketwatch</option><option value="Meeting">Meeting</option>
+				<option value="Research">Research</option>
+				<option value="Research Address">Research Address</option>
+				<option value="Test Group1">Test Group1</option>
+			</select>
+			
+			<select title="Selected" size="10" multiple="multiple">
+				<option value="Marketwatch 2">Marketwatch 2</option>
+				<option value="Pre-Meeting">Pre-Meeting</option>
+				<option value="Proposal Delivered">Proposal Delivered</option>
+				<option value="Research Phone #">Research Phone #</option> 
+			</select>
+        </apex:panelGrid>
+    </apex:form>
+</apex:page>

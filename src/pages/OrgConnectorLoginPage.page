@@ -1,0 +1,12 @@
+<apex:page controller="OrgConnector" sidebar="false">
+	<apex:form id="formId">
+		<apex:pageBlock >
+			<apex:outputLabel value="Please enter your username and password"/><br/>
+			<apex:outputLabel value="Username" style="font-weight:bold;"/>
+			<apex:inputText value="{!username}"/> <br/>
+			
+			<apex:outputLabel value="Password" style="font-weight:bold;"/>
+			<apex:inputText value="{!password}"/>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

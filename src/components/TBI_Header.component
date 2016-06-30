@@ -1,0 +1,50 @@
+<apex:component >
+    
+<link rel="pingback" href="http://sd-devsite.com/tbi/xmlrpc.php" />
+<link rel="alternate" type="application/rss+xml" title="The Brain Initiative &raquo; Feed" href="http://sd-devsite.com/tbi/feed/" />
+<link rel='stylesheet' id='stylesheet-css'  href='http://sd-devsite.com/tbi/wp-content/themes/inovado_child/style.css?ver=1' type='text/css' media='all' />
+
+<style>
+
+#topbar{ background: #efefef; border-bottom: 2px solid #fa8c05; }
+#topbar .callus { color: #000000; }
+#topbar .callus a { color: #000000; }
+#topbar .callus a:hover { color: #5481B4; }
+	
+@media only screen and (max-width: 767px) {
+#topbar .callus{ background: #efefef; }	
+}
+
+.header{ background: #ffffff; }
+.header .slogan{ font-family: arial, Arial, Helvetica, sans-serif; font-size: 13px; font-weight: normal; color: #666666; }
+
+#header-v2 .header-v2-container{ height: 90px; }
+
+</style>
+
+<div id="topbar" class="clearfix ">
+	
+	<div class="container">
+
+		<div class="eight columns">
+			<div class="callus">Tel: 415-123-1234 / <a href="mailto:info@thebrainitiative.org?Subject=TBI%20Website">
+				info@thebraininitiative.org</a></div>
+				<div class="clear">
+				</div>
+			</div>
+
+			<div class="eight columns">
+				<div class="social-icons clearfix">
+				<ul>
+				<li class="social-twitter"><a href="http://www.twitter.com/TheBrainInit" target="_blank" title="Twitter">Twitter</a></li>
+				<li class="social-facebook"><a href="https://www.facebook.com/pages/The-Brain-Initiative/190867667731111" target="_blank" title="Facebook">Facebook</a></li>
+				<li class="social-google"><a href="https://plus.google.com/u/0/b/112903670186156399453/112903670186156399453/posts" target="_blank" title="Google">Google+</a></li>
+				<li class="social-linkedin"><a href="http://www.linkedin.com/groups/Brain-Initiative-5014517/about?trk=anet_ug_grppro" target="_blank" title="LinkedIn">LinkedIn</a></li>																																																																								</ul>
+			</div>
+		</div>
+				
+	</div>
+	
+</div> 
+    
+</apex:component>

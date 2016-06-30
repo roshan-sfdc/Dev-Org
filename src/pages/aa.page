@@ -1,0 +1,24 @@
+<apex:page Controller="AaController" action="{!init}" > <!-- language="en-US" -->
+<apex:form id="formId">
+	<apex:pageBlock >
+		<apex:pageBlockSection >
+<!--             <apex:outputLabel value="{!$Label.Translation_Test}--{!$CurrentPage.Name}---{!$CurrentPage.URL}" /> -->
+<!--             <apex:selectList value="{!selectedLanguage}" > -->
+<!--          <apex:selectOption itemLabel="English" itemValue="English" /> -->
+<!--          <apex:selectOption itemLabel="French" itemValue="French" /> -->
+<!--          <apex:selectOption itemLabel="Spanish" itemValue="Spanish" /> -->
+<!--      </apex:selectList> -->
+     <apex:inputField value="{!user.LanguageLocaleKey}" />
+     <apex:commandButton value="Submit" action="{!updateUser}" oncomplete="window.location = window.location.href;" />
+        <apex:outputPanel id="text">
+        <apex:outputLabel value="{!$Label.Translation_Test}"   />
+        </apex:outputPanel>
+<!-- 				<apex:pageBlockTable value="{!details}" var="cd" > -->
+<!-- 					<apex:column value="{!cd.Quantity}"/> -->
+<!-- 					<apex:column value="{!cd.PricebookEntryId}"/> --> 
+<!-- 					<apex:column value="{!cd.OpportunityId}"/> -->
+<!-- 				</apex:pageBlockTable> -->
+		</apex:pageBlockSection>
+	</apex:pageBlock>
+	</apex:form>
+</apex:page>

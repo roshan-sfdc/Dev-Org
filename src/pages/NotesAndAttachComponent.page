@@ -1,0 +1,40 @@
+<apex:page controller="NotesAndAttachComponent" action="{!init}">
+	<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+	<apex:form >	
+		<apex:pageBlock >
+				<apex:pageBlockButtons rendered="{!NOT(isNewAttachment)}">
+<!-- 					<apex:commandbutton value="Attach File" action="{!createNewAttachment}"/> -->
+					<input type="button" value="Attach filee" class="btnn" />
+				</apex:pageBlockButtons>
+				<apex:pageBlockTable value="{!wrapperList}" var="v" rendered="{!NOT(isNewAttachment)}">
+					<apex:column headerValue="Type" >
+						<apex:outputLabel value="Attachment" />
+					</apex:column>
+					
+					<apex:column headerValue="Title" >
+						<apex:outputLink target="_blank" value="/{!v.attach.Id}">{!v.attach.Name}</apex:outputLink>
+					</apex:column> 
+					
+					<apex:column headerValue="Related To" >
+						<apex:outputLabel value="{!v.account.Name}" />
+					</apex:column>
+				</apex:pageBlockTable>
+		
+			<apex:pageBlockTable value="{!accountMap}" var="v" rendered="{!isNewAttachment}">
+				<apex:column headerValue="Account Name" >
+					<apex:outputLink value="/p/attach/NoteAttach?pid={!accountMap[v].Id}">{!accountMap[v].Name}</apex:outputLink>
+				</apex:column>
+			</apex:pageBlockTable>
+		
+		</apex:pageBlock>
+	</apex:form>
+	
+	<script>
+		$('.btnn').click(function() {
+			console.log('===called=btn===');
+			parent.window.location = 'https://c.ap1.visual.force.com/apex/NotesAndAttachComponent?mode=newAttach';
+		});
+		
+	</script>
+	
+</apex:page>

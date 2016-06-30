@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This will host rcm1 endpoint settings.</description>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Activities_Import_Date__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Activities Import Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Api_Key__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Api Key from RCM1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The api key provided by RCM1</inlineHelpText>
+        <label>Api_Key</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>isTest__c</fullName>
+        <defaultValue>true</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Target the test api url for rcm1</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Use this to specify whether to target the test or production data for rcm1.</inlineHelpText>
+        <label>isTest</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>scheduler_id__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Scheduled job id for import. This is used for turning the job off.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Scheduled job id for import</inlineHelpText>
+        <label>scheduler_id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>RCM1_Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

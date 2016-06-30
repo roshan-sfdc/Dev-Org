@@ -1,0 +1,21 @@
+<apex:page controller="TranslationPageController" action="{!init}">
+    <apex:form id="formId">
+	    <apex:pageBlock >
+		     <apex:pageBlockSection >
+			    <apex:inputField value="{!user.LanguageLocaleKey}" />
+			    <apex:outputPanel >
+				    <apex:commandButton value="Submit" status="btnStatus" action="{!updateUser}" oncomplete="window.location = window.location.href;"/> <!--  -->
+				    <apex:actionStatus id="btnStatus">
+				       <apex:facet name="start" >
+				         <apex:image value="/img/loading32.gif" style="height:15px;" /> 
+				       </apex:facet>
+				    </apex:actionStatus>
+			    </apex:outputPanel>
+		        <apex:outputPanel id="tst">
+		            <apex:outputLabel value="{!label}" id="text" />
+		            <apex:inputField value="{!contact.LeadSource}" />
+		        </apex:outputPanel>
+		    </apex:pageBlockSection>
+	    </apex:pageBlock> 
+    </apex:form>
+</apex:page>

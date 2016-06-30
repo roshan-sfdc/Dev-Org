@@ -1,0 +1,5 @@
+<apex:page standardController="McLabs2__Proposal__c" extensions="McLabs2.ProposalAssignmentController" action="{!createAssignment}">
+	<apex:pagemessages />
+	<apex:detail subject="{!McLabs2__Proposal__c.id}" showChatter="true" relatedList="true" relatedListHover="true"/>
+	
+</apex:page>

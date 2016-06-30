@@ -1,0 +1,42 @@
+<apex:page controller="AddProductController">
+	<apex:form >
+	    <apex:pageBlock >
+	    	<apex:pageBlockSection id="block1" >
+	    		<apex:pageBlockSectionItem >
+	    			<apex:outputLabel value="Product Name"/>
+	    			<apex:inputText value="{!prodName}"/>
+	    		</apex:pageBlockSectionItem>
+	    		<apex:pageBlockSectionItem >
+	    			<apex:outputLabel value="Company"/>
+	    			<apex:inputText value="{!company}"/>
+	    		</apex:pageBlockSectionItem>
+	    		<apex:pageBlockSectionItem >
+	    			<apex:outputLabel value="Product Description"/>
+	    			<apex:inputText value="{!description}"/>
+	    		</apex:pageBlockSectionItem>
+	    		<apex:pageBlockSectionItem >
+	    			<apex:outputLabel value="Product Code"/>
+	    			<apex:inputText value="{!code}"/>
+	    		</apex:pageBlockSectionItem>
+	    		<apex:pageBlockSectionItem >
+	    			<apex:outputLabel value="IsActive"/>
+	    			 <apex:inputCheckbox />
+	    		</apex:pageBlockSectionItem>
+	    		<apex:pageBlockSectionItem >
+	    			<apex:outputLabel value="Product Type"/>
+	    			<apex:selectList id="type" value="{!ptype}"  size="1">
+						<apex:selectOption itemValue="Hardware" itemLabel="Hardware"/>
+						<apex:selectOption itemValue="Software" itemLabel="Software"/>
+						<apex:selectOption itemValue="HomeAppliances" itemLabel="HomeAppliances"/>
+					</apex:selectList>
+	    		</apex:pageBlockSectionItem>
+	    	</apex:pageBlockSection>
+	    	<apex:pageBlockSection >
+	    		<apex:pageBlockSectionItem >
+	    			<apex:commandButton value="Add" action="{!doInsert}" rerender="block1"/>
+	    			<apex:commandbutton action="{!homePage}"  value="Back"/>
+	    		</apex:pageBlockSectionItem>
+	    	</apex:pageBlockSection>	
+	    </apex:pageBlock>
+    </apex:form>
+</apex:page>

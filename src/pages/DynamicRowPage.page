@@ -1,0 +1,205 @@
+<apex:page controller="DynamicRowPageController">
+	<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js" />
+    <apex:stylesheet value="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" />
+    <apex:stylesheet value="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+    
+<!-- 	<div id="tabs">  -->
+<!-- 		<ul> -->
+<!-- 			<li><a href="#tabs-1">TAB 1 HEADING</a></li> -->
+<!-- 			<li><a href="#tabs-2">TAB 2 HEADING</a></li> -->
+<!-- 			<li><a href="#tabs-3">TAB 3 HEADING</a></li> -->
+<!-- 			<li><a href="#tabs-4">TAB 4 HEADING</a></li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+	
+	<div id="tabs"> 
+		<ul style="padding-left: 15em; border: 0px solid !important; background-color: transparent !important;">
+			<apex:variable value="{!1}" var="count"/>
+			<apex:repeat value="{!lstString}" var="v">
+				<li><a href="#tabs-{!count}">TAB-{!count}</a></li>
+				<apex:variable var="count" value="{!count+1}"/>
+			</apex:repeat>
+		</ul>
+	</div>
+	
+<style>
+.ui-tabs-vertical {
+    width: 55em;
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+    padding: none;
+}
+
+.ui-tabs-vertical .ui-tabs-nav {
+    float: left;
+    width: 9em;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li {
+    clear: left;
+    width: 15em;
+    border: 0 !important;
+    top: 0px !important;
+    white-space: normal;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a {
+    display: block;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+    border-right-width: 1px;
+    border-right-width: 1px;
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+    float: right;
+    width: 40em;
+    padding: 0 !important;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding: 0 !important;
+}
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $( "#tabs" ).tabs();
+	//$( ".vertical " ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    //$( ".vertical li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+  });
+  </script>
+	
+</apex:page>
+
+
+<!-- <apex:page id="thePage"> -->
+<!--     <apex:tabPanel switchType="client" selectedTab="name2" id="theTabPanel"> -->
+<!--         <apex:tab label="One" name="name1" id="tabOne">content for tab one</apex:tab> -->
+<!--         <apex:tab label="Two" name="name2" id="tabTwo">content for tab two</apex:tab> -->
+<!--     </apex:tabPanel> -->
+<!-- </apex:page> -->
+
+
+
+
+<!-- <apex:page > -->
+<!-- 	<apex:form > -->
+<!-- 	    <apex:panelGrid columns="2" id="theGrid"> -->
+<!-- 	        <apex:outputText value="First" id="theFirst"/> -->
+<!-- 	        <apex:outputText value="Second" id="theSecond"/> -->
+<!-- 	        <apex:outputText value="Third" id="theThird"/> -->
+<!-- 	        <apex:outputText value="Fourth" id="theFourth"/> -->
+<!-- 	    </apex:panelGrid> -->
+	    
+<!-- 	    <apex:outputLink value="{!$Page.OrgConnector}">Click</apex:outputLink> -->
+    
+<!--     </apex:form> -->
+<!-- </apex:page> -->
+
+
+<!-- <apex:page sidebar="false"> -->
+<!-- <apex:stylesheet value="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css" /> -->
+<!-- <style> -->
+<!-- .topClass -->
+<!-- { -->
+<!-- 	position: absolute; -->
+<!-- 	top: 3em; -->
+<!-- 	left: 2%; -->
+<!-- 	width: 40%; -->
+<!-- 	box-shadow: 0 0 5px #888; -->
+<!-- 	-webkit-box-shadow: 0 0 5px #888; -->
+<!-- } -->
+
+<!-- .test  -->
+<!-- { -->
+<!-- 	border: none; -->
+<!-- 	border-bottom: none; -->
+<!-- 	padding: 1em; -->
+<!-- 	background-color: #d95d2e; -->
+<!-- 	border-color: #d95d2e; -->
+<!-- 	color: #fff; -->
+<!-- 	margin-top: 3px; -->
+<!-- } -->
+
+
+<!-- .ucsfText -->
+<!-- { -->
+<!-- 	color: white !important; -->
+<!-- 	margin-left: 37px; -->
+<!-- 	//font-size: .9em; -->
+<!-- 	font-size: 13px; -->
+<!-- 	font-weight: bold; -->
+<!-- 	padding-left: 1px; -->
+<!-- 	display: block; -->
+<!-- 	margin-top: -37px; -->
+<!-- } -->
+
+<!-- .ZipText -->
+<!-- { -->
+<!-- 	margin-left: 37px; -->
+<!-- 	font-size: 1.8em; -->
+<!-- 	font-weight: normal; -->
+<!-- 	line-height: 1.1em; -->
+<!-- 	display: block; -->
+<!-- 	margin-top: -14px; -->
+<!-- } -->
+
+<!-- .ImageClass  -->
+<!-- { -->
+<!-- 	background-position: 0 0; -->
+<!-- 	width: 32px; -->
+<!-- 	height: 32px; -->
+<!-- 	margin-right: 5px; -->
+<!-- 	border: 0; -->
+<!-- 	margin-top: 22px; -->
+<!-- } -->
+
+
+<!-- </style> -->
+<!-- 	<apex:form id="formId"> -->
+<!--         <apex:outputPanel layout="block" styleClass="topClass" style="background-color:#d95d2e"> -->
+<!--             <apex:outputPanel layout="block" styleClass="test"> -->
+<!--             	<apex:outputPanel style="padding:15px 0 0;margin-bottom:16px;"> -->
+<!-- 	            	<apex:image value="/img/icon/people32.png" styleClass="ImageClass"/> -->
+<!-- 					<apex:outputLabel value="UCSF" styleClass="ucsfText" style="margin-left:34px;"/><br/> -->
+<!-- 					<apex:outputLabel value="ZipRounds Paging" styleClass="ZipText" style="margin-left:34px;"/> -->
+<!-- 				</apex:outputPanel> -->
+<!-- 					<br/> -->
+<!--                 <apex:outputPanel layout="inline" styleClass="buttonset primary"> -->
+<!--                     <input type="radio" name="view-type" id="view-type-new" view-type="new" checked="checked" /> -->
+<!--                     <label for="view-type-new">New Page</label> -->
+<!--                     <input type="radio" name="view-type" id="view-type-recent" view-type="recent" /> -->
+<!--                     <label for="view-type-recent">Recent</label> -->
+<!--                     Directory Button -->
+<!--                     <input type="radio" name="view-type" id="view-type-recent" view-type="recent" /> -->
+<!--                     <label for="view-type-recent">Directory</label> -->
+<!--                 </apex:outputPanel> -->
+<!--             </apex:outputPanel> -->
+<!--          </apex:outputPanel> -->
+<!-- 	</apex:form> -->
+<!-- </apex:page> -->
+
+
+
+<!-- <apex:page controller="DynamicRowPageController"> -->
+<!-- 	<apex:form id="formId">  -->
+<!-- 		<apex:pageBlock > -->
+<!-- 			<apex:repeat value="{!WrapperList}" var="v" id="repeatId"> -->
+<!-- 				<apex:outputLabel value="Name"/> -->
+<!-- 				<apex:inputText value="{!v.strName}"/> -->
+				
+<!-- 				<apex:outputLabel value="Address"/> -->
+<!-- 				<apex:inputText value="{!v.strAddress}"/> -->
+				
+<!-- 				<apex:outputLabel value="Age"/> -->
+<!-- 				<apex:inputText value="{!v.intAge}"/><br/> -->
+<!-- 			</apex:repeat>				 -->
+<!-- 		</apex:pageBlock> -->
+<!-- 		<apex:commandButton action="{!createDynamicRows}" value="Add 1 more Record" />&nbsp; -->
+<!-- 		<apex:commandButton action="{!deleteLastRow}" value="Delete last Row" /> -->
+<!-- 	</apex:form> -->
+<!-- </apex:page> -->

@@ -1,0 +1,25 @@
+<!-- <apex:page standardController="Opportunity"> -->
+	<!-- <apex:form > -->
+		<!-- <apex:pageBlock title="Opportunity"> -->
+		<!-- <apex:pageBlockSection > -->
+		<!--   <apex:inputField value="{!opportunity.name}"/> -->
+		<!--   <apex:inputField value="{!opportunity.type}"/> -->
+		<!--   <apex:inputField value="{!opportunity.accountid}"/> -->
+		<!--   <apex:inputField value="{!opportunity.StageName}"/> -->
+		<!--   <apex:inputField value="{!opportunity.closedate}"/> -->
+		<!-- </apex:pageBlockSection> -->
+		<!-- </apex:pageBlock> -->
+	<!-- </apex:form> -->
+<!-- </apex:page> -->
+
+<apex:page standardController="Account" sidebar="false">
+
+<style>
+/*
+    body {
+	   font-size: 18px; 
+    }
+*/
+</style>
+    <apex:detail subject="{!account.Id}" relatedList="true" title="true" inlineEdit="true"/>
+</apex:page>

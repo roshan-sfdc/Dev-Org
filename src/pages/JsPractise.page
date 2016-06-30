@@ -1,0 +1,21 @@
+<apex:page >
+<!-- 	<apex:image id="myimage" url="{!$Resource.JS_Practise_bulboff}" onclick="changeImage()" width="100" height="180"/>  -->
+	<p>Click the light bulb to turn on/off the light</p>
+	<img id="myimage" onclick="changeImage()" src="{!$Resource.JS_Practise_bulboff}" width="100" height="180"/>
+
+<script>
+	function changeImage()
+	{
+		element=document.getElementById('myimage')
+		if (element.src.match("bulbon"))
+		  {
+		  element.src="{!$Resource.JS_Practise_bulboff}";
+		  }
+		else
+		  {
+		  element.src="{!$Resource.JS_Practise_bulbon}";
+		  }
+	}
+</script>
+
+</apex:page>

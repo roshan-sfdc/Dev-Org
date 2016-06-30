@@ -1,0 +1,5 @@
+<apex:page standardController="Contact" extensions="FlexibleCloning" action="{!init}">
+
+	Test Page 
+
+</apex:page>

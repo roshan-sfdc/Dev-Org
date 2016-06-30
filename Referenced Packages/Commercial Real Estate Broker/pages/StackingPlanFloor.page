@@ -1,0 +1,4 @@
+<apex:page standardController="McLabs2__Property__c" showHeader="false" sidebar="false" standardStylesheets="false" doctype="html-5.0" applyBodyTag="false" applyHtmlTag="false">
+    <c:StackingPlanComponent id="Pro">     
+    </c:StackingPlanComponent>
+</apex:page>

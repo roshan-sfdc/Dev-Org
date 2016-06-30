@@ -1,0 +1,2 @@
+<apex:page standardController="McLabs2__Invoice__c" extensions="McLabs2.InvoiceEmailTemplateController" action="{!sendEmailTemplate}">
+</apex:page>

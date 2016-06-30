@@ -1,0 +1,38 @@
+<apex:page controller="CampaignCustomController_pagination">
+    <apex:pageBlock title="UserDriven Campaigns">
+    <apex:form >
+    View:
+        <apex:selectList id="chooseColor" value="{!cview}" size="1">
+        <apex:actionSupport event="onchange" action="{!Search}"/>
+            <apex:selectOption itemValue="Recently Modified" itemLabel="Recently Modified"/>
+            <apex:selectOption itemValue="All Campaigns" itemLabel="All Campaigns"/>
+            <apex:selectOption itemValue="All Active Campaigns" itemLabel="All Active Campaigns"/>
+            <apex:selectOption itemValue="My Active Campaigns" itemLabel="My Active Campaigns"/>
+            <apex:selectOption itemValue="Inactive Campaigns" itemLabel="Inactive Campaigns"/>
+        </apex:selectList>
+        
+        <apex:pageBlockSection columns="1" id="list">
+                <apex:pageBlockTable value="{!AllSearchUsers}" var="camp">
+                      <apex:column headerValue="Campaign">
+                          <apex:outputLink value="https://c.ap1.visual.force.com/apex/Two">{!camp.name}
+                            <apex:param name="cid" value="{!camp.id}"></apex:param>
+                          </apex:outputLink>
+                      </apex:column>
+                    <apex:column headerValue="Status" value="{!camp.Status}"/>
+                    <apex:column headerValue="Type" value="{!camp.Type}"/>
+                    <apex:column headerValue="Start Date" value="{!camp.StartDate}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+           
+           <apex:pageBlockSection >
+                <apex:outputPanel >
+                      <apex:commandLink action="{!Previous}" title="Previous Page" value="Previous Page" rendered="{!Con.HasPrevious}"/>
+                      <apex:outputPanel styleClass="pShowLess noLink" style="color:white" rendered="{!NOT(Con.HasPrevious)}">Previous Page</apex:outputPanel>         
+                         &nbsp;&nbsp;&nbsp;
+                <apex:outputPanel styleClass="pShowLess noLink" style="color:white" rendered="{!NOT(Con.HasNext)}">Next Page</apex:outputPanel>         
+                      <apex:commandLink title="Next Page" value="Next Page" rendered="{!Con.HasNext}" action="{!Next}"/>&nbsp;
+             </apex:outputpanel>
+           </apex:pageBlockSection>
+    </apex:form>
+    </apex:pageBlock>
+</apex:page>

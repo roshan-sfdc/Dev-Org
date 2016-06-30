@@ -1,0 +1,252 @@
+<apex:page >
+    <!--<apex:page standardcontroller="PSS_Call_Log__c" extensions="PSS_NewCallLog">
+    
+    <style type="text/css">
+        .tbl table {
+            width: 100% ;
+            border-collapse: collapse;
+        }
+        
+        .tbl th {
+            color: white;
+            padding: 3px;
+            background-color: #9898cd;
+        }
+        
+        .tbl td {
+            padding: 4px;
+            background-color: #ffffff;
+            border-style: solid;
+            border-width: 1px;
+            border-color: gray;
+        }
+        
+        #errorMsgSpan{
+            color: red;
+            font-size: 14px
+        }
+    </style>
+    
+    <apex:includeScript value="{!$Resource.jquery}" />
+    
+    <apex:form id="theForm">
+        <apex:sectionHeader title="New Call Log" subtitle="Call Log Edit"/>
+        
+        <apex:pageBlock >
+        
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+                <apex:commandButton value="Save & New" action="{!saveAndNew}"/>
+                <apex:commandButton value="Cancel" action="{!cancel}" immediate="true"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageMessages escape="false"/>
+            
+            <apex:pageBlockSection columns="1" title="Information" collapsible="false"> 
+                <apex:repeat value="{!$ObjectType.PSS_Call_Log__c.FieldSets.New_Call_Log_Fields}" var="field">
+                    <apex:inputField value="{!callLog[field]}" styleClass="{!field}" /> 
+                </apex:repeat> 
+                
+                <apex:outputPanel style="display:none;">
+                    <apex:inputText value="{!callLog.Contact__c}" styleClass="Contact__c" />
+                </apex:outputPanel>
+            </apex:pageBlockSection>
+            
+            <div class="tbl">
+                <span id="errorMsgSpan"></span>
+                <table></table>
+            </div>
+            
+        </apex:pageBlock>
+    </apex:form>
+    
+    <script>
+        
+       var $Account__c = $('.Account__c');
+       var $Producer_Location_Contact__c = $('.Producer_Location_Contact__c');
+       
+       
+       /*=== When Producer Location Contact is selected === */
+        $Producer_Location_Contact__c.change(function() {
+             updateContactInfoForProdLocContact();
+        });
+        
+        function updateContactInfoForProdLocContact() {
+            var prodLocConName;
+            
+            if($Producer_Location_Contact__c.is("input") == true)
+                prodLocConName = $Producer_Location_Contact__c.val();
+            else if ($Producer_Location_Contact__c.is("select") == true)
+                prodLocConName = $Producer_Location_Contact__c.find(":selected").text();
+            
+            PSS_NewCallLog.getProducerLocationContactInfo(
+                prodLocConName, function callback(prodLocCon) {
+                    if (prodLocCon != null) {
+                        $('.Contact_Name__c').val($.trim(prodLocCon.Name)); 
+                        $('.Other_Contact_Number__c').val($.trim(prodLocCon.Phone_Number__c));
+                        $('.Email_Address__c').val($.trim(prodLocCon.Email__c));
+                        $('.Fax__c').val($.trim(prodLocCon.Fax__c));
+                    } else {
+                        $('.Contact_Name__c, .Other_Contact_Number__c, .Email_Address__c, .Fax__c').val(''); 
+                    }
+                }
+            );
+        }
+       
+       /*=== When Account is selected ===*/
+       $Account__c.change(function() {
+             getContactList();
+        });
+        
+        function getContactList() {
+        
+            var accntName;
+             
+            if($Account__c.is("input") == true)
+                accntName = $Account__c.val();
+            else if ($Account__c.is("select") == true)
+                accntName = $Account__c.find(":selected").text();
+            
+            PSS_NewCallLog.getContactList(
+                accntName,function callback(contactInfo) {
+                    
+                    var contactList = contactInfo.contactList;
+                    
+                    $('.tbl table').empty();
+                    
+                    var tblStart = '<tr><th></th><th>Name</th><th>Phone</th><th>Email</th><th>Fax</th></tr>';
+                    var tblEnd = '</tr>';
+                    var tblBody;
+                    
+                     
+                    $.each(contactList, function(index, value){
+                        tblBody += '<tr><td>'; 
+                        tblBody += '<input type="radio"';
+                        tblBody += ' Contact_Name__c='         + '"' + $.trim(value.Name)  + '"';
+                        tblBody += ' Other_Contact_Number__c=' + '"' + $.trim(value.Phone) + '"';
+                        tblBody += ' Email_Address__c='        + '"' + $.trim(value.Email) + '"';
+                        tblBody += ' Fax__c='                  + '"' + $.trim(value.Fax)   + '"';
+                        tblBody += ' Contact__c='              + '"' + $.trim(value.Id)    + '"';
+                        tblBody += 'class="radioBtn"/></td>';
+                        tblBody += '<td>' + $.trim(value.Name)  + '</td>';
+                        tblBody += '<td>' + $.trim(value.Phone) + '</td>';
+                        tblBody += '<td>' + $.trim(value.Email) + '</td>';
+                        tblBody += '<td>' + $.trim(value.Fax)   + '</td>';
+                        tblBody += '</tr>';
+                    });
+                    var tbl = tblStart + tblBody + tblEnd;
+                    
+                    
+                    if(contactInfo.isAccountExist == true) {
+                        if (contactList.length>0) {
+                            $('#errorMsgSpan').html('');
+                            $('.tbl table').append(tbl);
+                            handleRadioButtons();
+                        } else {
+                            $('#errorMsgSpan').html('<img src="/img/msg_icons/info24.gif" style="vertical-align: bottom;"> No contact available for this account');
+                        }
+                    } else {
+                        $('#errorMsgSpan').html('');
+                    }
+                }
+            );
+        }
+        
+        function handleRadioButtons() {
+            $('input:radio').change(
+                function() {
+                    $('.Producer_Location_Contact__c').val('');
+                    $('.radioBtn').not(this).attr('checked', false);
+                    populateContactInfo(this);
+                }
+            ); 
+        }
+        
+        function populateContactInfo(obj) {
+            var fieldsToUpdate = new Array('Contact_Name__c', 'Other_Contact_Number__c', 'Email_Address__c', 'Fax__c', 'Contact__c');
+            $.each(fieldsToUpdate, function( index, value ) {
+                var fieldVal = $(obj).attr(value);
+                $('.'+value).val(fieldVal);
+            });
+        }
+        
+    </script>
+    
+</apex:page>
+
+global with sharing class PSS_NewCallLog {
+    
+    public PSS_Call_Log__c callLog {get; set;}
+    
+    public PSS_NewCallLog(Apexpages.Standardcontroller sc) {
+        callLog = (PSS_Call_Log__c)sc.getRecord();
+    }
+    
+    public Pagereference save() {
+        try {
+            Database.Saveresult sr = Database.insert(callLog);
+            return new Pagereference('/'+sr.getId());
+        } catch(Exception ex) {
+            ApexPages.addMessage(new Apexpages.Message(ApexPages.Severity.ERROR, ex.getMessage()));
+        }
+        return null;
+    }
+    
+    public Pagereference saveAndNew() {
+        try {
+            Database.Saveresult sr = Database.insert(callLog);
+            Pagereference page = new Pagereference('/apex/PSS_NewCallLog');
+            page.setRedirect(true);
+            return page;
+        } catch(Exception ex) {
+            ApexPages.addMessage(new Apexpages.Message(ApexPages.Severity.ERROR, ex.getMessage()));
+        }
+        return null;
+    }
+    
+    public Pagereference cancel() {
+        String keyPrefix = PSS_Call_Log__c.sObjectType.getDescribe().keyPrefix;
+        return new Pagereference('/'+keyPrefix);
+    }
+    
+    @RemoteAction
+    global static ContactInfo getContactList(String accountName) {
+        ContactInfo contactInfo;
+        
+        list<Account> accountList = [
+                    select Id
+                         , (select Id,Name,Phone,Email,Fax from Contacts)
+                      FROM Account
+                     WHERE Name = :accountName 
+        ];
+        
+        return (accountList.size()>0)? new ContactInfo(true, accountList[0].contacts) : new ContactInfo(false, new list<Contact>());
+    }
+    
+    global class ContactInfo {
+        public boolean isAccountExist {get; set;}
+        public list<Contact> contactList {get; set;} 
+        
+        public contactInfo(boolean isAccountExist, list<Contact> contactList) {
+            this.isAccountExist = isAccountExist;
+            this.contactList = contactList;
+        }
+    }
+     
+    @RemoteAction
+    global static Producer_Location_Contact__c getProducerLocationContactInfo(String prodLocConName) {
+        list<Producer_Location_Contact__c> prodLocConList = [
+                    select Id
+                         , Name
+                         , Phone_Number__c
+                         , Email__c 
+                         , Fax__c
+                      FROM Producer_Location_Contact__c
+                     WHERE Name = :prodLocConName
+        ];
+        return (prodLocConList.size() == 1)? prodLocConList[0] : null;
+    }
+}
+
+-->
+</apex:page>

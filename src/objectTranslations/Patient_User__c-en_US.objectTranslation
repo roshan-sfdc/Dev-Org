@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Patient/User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Patients/Users</value>
+    </caseValues>
+    <fields>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blood Group --></label>
+        <name>Blood_Group__c</name>
+        <picklistValues>
+            <masterLabel>A+</masterLabel>
+            <translation><!-- A+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A-</masterLabel>
+            <translation><!-- A- --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AB+</masterLabel>
+            <translation><!-- AB+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AB-</masterLabel>
+            <translation><!-- AB- --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B+</masterLabel>
+            <translation><!-- B+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B-</masterLabel>
+            <translation><!-- B- --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>O+</masterLabel>
+            <translation><!-- O+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>O-</masterLabel>
+            <translation><!-- O- --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Doctor&apos;s Name --></label>
+        <name>Doctor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Name --></label>
+        <name>Full_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Name --></label>
+        <name>Last_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- First Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prescribed Medicines --></label>
+        <name>Prescription__c</name>
+    </fields>
+    <layouts>
+        <layout>User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Patient --></label>
+        <name>Patient</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- User --></label>
+        <name>User</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

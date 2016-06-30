@@ -1,0 +1,21 @@
+<apex:component >
+    
+    <apex:styleSheet value="{!URLFOR($Resource.Tquila_demo_Resource, 'footer_style.css')}" />
+
+    <div >
+        <apex:image value="{!URLFOR($Resource.Tquila_demo_Resource, 'footer_bike_image.jpg')}" />
+        
+        <div id="footer_div" >
+            
+            <apex:outputText styleClass="copyrightText" value="{0}{1}" escape="false">
+                <apex:param value="designed by Tquila Motorbikes Ltd" />
+                <apex:param value="&copy;" />
+            </apex:outputText>
+        	
+        	<a href="#"><apex:image value="{!URLFOR($Resource.Tquila_demo_Resource, 'fb_footer.png')}" /></a>
+        	<a href="#"><apex:image value="{!URLFOR($Resource.Tquila_demo_Resource, 'twitter_footer.png')}" /></a>
+        	<a href="#"><apex:image value="{!URLFOR($Resource.Tquila_demo_Resource, 'linkedin_footer.png')}" /></a>
+        </div>
+    </div>
+
+</apex:component>

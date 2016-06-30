@@ -1,0 +1,45 @@
+<apex:page controller="Jade_ContactDetails" >
+    
+    <apex:form >
+        <apex:pageBlock > 
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}" />
+                <apex:commandButton value="Cancel" action="{!cancel}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="2" >
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="First Name" />
+                    <apex:inputText value="{!contact.FirstName}" />
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Last Name" />
+                    <apex:inputText value="{!contact.LastName}" />                
+                </apex:pageBlockSectionItem>
+                
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Country" />
+                    <apex:selectList value="{!contact.Country__c}" size="1"  onchange="fetchStates();" >
+                        <apex:selectOptions value="{!CountryOptions}" />
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                
+               <apex:pageBlockSectionItem />
+               
+               <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="State" />
+                    <apex:selectList value="{!contact.State__c}" size="1" id="states">
+                        <apex:selectOptions value="{!stateOptions}" />
+                    </apex:selectList>
+               </apex:pageBlockSectionItem>
+               
+               <apex:pageBlockSectionItem />            
+            </apex:pageBlockSection> 
+            
+        </apex:pageBlock>
+        <apex:actionFunction name="fetchStates" action="{!action}" reRender="states"/>  
+
+    </apex:form>
+    
+</apex:page>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Generic Single Sign On</description>
+    <frameHeight>600</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>SSO</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom15: People</motif>
+    <url>http://www.interclasse.com/sso-salesforce.php?OID={!Organization.Id}&amp;UID={!User.Id}&amp;SID={!API.Session_ID}</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

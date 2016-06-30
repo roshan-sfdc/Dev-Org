@@ -1,0 +1,38 @@
+<apex:page controller="CampaignCustomControllerr">
+    <apex:pageBlock title="UserDriven Campaigns">
+    <apex:form >
+    View:
+        <apex:selectList id="chooseColor" value="{!cview}" size="1">
+        <apex:actionSupport event="onchange" rerender="list"/>
+            <apex:selectOption itemValue="Recently Modified" itemLabel="Recently Modified"/>
+            <apex:selectOption itemValue="All Campaigns" itemLabel="All Campaigns"/>
+            <apex:selectOption itemValue="All Active Campaigns" itemLabel="All Active Campaigns"/>
+            <apex:selectOption itemValue="My Active Campaigns" itemLabel="My Active Campaigns"/>
+            <apex:selectOption itemValue="Inactive Campaigns" itemLabel="Inactive Campaigns"/>
+        </apex:selectList>
+    </apex:form>
+    
+   
+    
+    
+    <apex:pageBlockTable value="{!campaigns}" var="cd" id="list">
+    
+          <apex:column >
+              <apex:outputLink value="https://c.ap1.visual.force.com/apex/Campaign_Detail_Page">
+              {!cd.name}
+              <apex:param name="cid" value="{!cd.id}">
+              </apex:param>
+              </apex:outputLink>
+          </apex:column>
+          <apex:column value="{!cd.status}"/>
+          <apex:column value="{!cd.Type}"/>
+          <apex:column value="{!cd.startDate}"/>
+          </apex:pageBlockTable>
+          
+          
+          
+          
+          
+       
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,16 @@
+<messaging:emailTemplate subject="Invoice {!relatedTo.Name} for {!recipient.Account.Name}" recipientType="Contact" relatedToType="McLabs2__Invoice__c">
+<messaging:plainTextEmailBody >{!recipient.FirstName},
+
+Please see the attached invoice #{!relatedTo.Name} due on <apex:outputText value=" {0,date,medium}"><apex:param value="{!relatedTo.McLabs2__Due_Date__c}"/></apex:outputText>. 
+
+After you review the attached invoice, please confirm that it was correct and that it will be submitted for payment.
+
+Thank you for your business.
+
+Sincerely,
+</messaging:plainTextEmailBody>
+<messaging:attachment renderAs="PDF" filename="{!$Organization.Name} Invoice {!relatedTo.Name} for {!recipient.Account.Name}">
+    <c:InvoiceSale Invoice_Id="{!relatedTo.Id}" rendered="{!relatedTo.McLabs2__Comp_Type__c=='Sale'}"/>
+  <c:InvoiceLease Invoice_Id="{!relatedTo.Id}" rendered="{!relatedTo.McLabs2__Comp_Type__c=='Lease'}"/>
+</messaging:attachment>
+</messaging:emailTemplate>

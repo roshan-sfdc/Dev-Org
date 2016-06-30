@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>FIRST_NAME</field>
+    </columns>
+    <columns>
+        <field>LAST_NAME</field>
+    </columns>
+    <columns>
+        <field>Contact.of_Listings__c</field>
+    </columns>
+    <columns>
+        <field>Contact.of_Seller_Transactions__c</field>
+    </columns>
+    <columns>
+        <field>Contact.of_Buyer_Transactions__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Broker_Execution__c</field>
+    </columns>
+    <description>What is the brokerage activity for all brokers?</description>
+    <filter>
+        <criteriaItems>
+            <column>CONTACT_RECORDTYPE</column>
+            <operator>equals</operator>
+            <value>Contact.Broker</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Contact.Broker_Type__c</column>
+            <operator>includes</operator>
+            <value>Investment</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Competitive Broker Execution</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ContactList</reportType>
+    <scope>my</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

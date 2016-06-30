@@ -1,0 +1,69 @@
+<apex:page controller="OrgConnector">
+	<apex:form id="formID">
+	<apex:pageMessages id="msg"/>
+		<apex:pageBlock id="pblk1">
+			<apex:outputLabel value="please enter your Username and Password" style="font-weight:bold"/><br/>
+			<apex:outputLabel value="Username"/>&nbsp;
+			<apex:inputText value="{!username}"/><br/>
+			
+			<apex:outputLabel value="Password"/>&nbsp;
+			<apex:inputSecret value="{!Password}"/>
+			
+			<apex:commandButton value="Login" action="{!createOrgConnection}" id="loginBtn" rerender="connectionStatusMsg,op,select,credentialsError" status="loginStatus"/>
+			<apex:actionStatus startText="Requesting..." stopText="" id="loginStatus"/>
+			<apex:outputPanel id="op">
+			<apex:commandButton value="Logout" action="{!doLogout}" rendered="{!logOutBtnRendered}" id="logoutbtn" status="logStatus"/><br/>
+				<apex:outputLabel value="{!connectionStatusMsg}" id="connectionStatusMsg" style="font-weight:bold;"/>
+				<apex:pageMessages id="credentialsError"/>
+			</apex:outputPanel>
+			
+			<apex:pageBlockSection columns="3">
+				<apex:pageBlockSectionItem >
+					<apex:outputPanel >
+						<apex:outputLabel value="Select an Object"/>
+						<apex:selectList value="{!selectedObject}" size="1" onChange="getAllFields()" id="select">
+							<apex:selectOptions value="{!stdObjectList}"/>
+						</apex:selectList>
+						<apex:actionStatus id="fieldFetchingStatus">
+							<apex:facet name="start">
+								<apex:image value="/img/loading32.gif" style="height:15px;"/>
+							</apex:facet>
+						</apex:actionStatus>
+					</apex:outputPanel>
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem >
+					<apex:outputLabel value="Select Fields"/>
+					<apex:selectList multiselect="true" value="{!selectedFieldList}" size="5" id="fieldselectList">
+						<apex:selectOptions value="{!fieldList}"/>
+					</apex:selectList>
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem >
+					<apex:outPutLabel value="No. Of Records"/>
+					<apex:inputText value="{!intNoOfRecs}"/>
+				</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			<center>
+				<apex:commandbutton value="Show Records" action="{!getRecords}" rerender="tblMsg,tbl" status="showTableStatus"/>
+				<apex:actionStatus id="showTableStatus">
+					<apex:facet name="start">
+						<apex:image value="/img/loading32.gif" style="height:15px;"/>
+					</apex:facet>
+				</apex:actionStatus>
+			</center>
+				<apex:pageMessages id="tblMsg"/>
+				<apex:pageBlockTable value="{!sObjectList}" var="v" id="tbl"><!-- rendered="{!isTblRendered} -->
+					<apex:column value="{!v.Id}"/>
+					<apex:repeat value="{!selectedFieldList}" var="fields">
+						<apex:column value="{!v[fields]}"/>
+					</apex:repeat>
+				</apex:pageBlockTable>
+		</apex:pageBlock>
+		<apex:actionFunction name="getAllFields" action="{!fetchFieldsOfSelectedSObject}" rerender="fieldselectList" status="fieldFetchingStatus"/>
+		
+		
+	</apex:form>
+	
+
+</apex:page>

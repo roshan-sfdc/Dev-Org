@@ -1,0 +1,4 @@
+<apex:page standardController="McLabs2__Spaces__c" extensions="McLabs2.SpaceProjectController" action="{!createComp}">
+    <apex:pagemessages />
+    <apex:detail subject="{!McLabs2__Spaces__c.id}" relatedList="true" showChatter="true" relatedListHover="true" inlineEdit="true" title="true" />
+</apex:page>

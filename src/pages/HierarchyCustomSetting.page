@@ -1,0 +1,5 @@
+<apex:page controller="HierarchyCustomSetting" sidebar="false" showHeader="false">
+
+    <apex:outputText value="{!$Setup.Employee_Bonus__c.bonus__c}" />
+
+</apex:page>

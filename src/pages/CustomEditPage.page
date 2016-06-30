@@ -1,0 +1,9 @@
+<apex:page > <!-- controller="CustomEditController" action="{!init}" -->
+
+<style>
+    .pbSubheader {
+        color: black ! important;
+     } 
+</style>
+    <c:CustomEditComponentOld /> <!-- record_Id="{!recordId}" recordType_Id="{!recordTypeId}" -->
+</apex:page>
